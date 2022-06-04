@@ -1,8 +1,10 @@
 import axios from "axios";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { server_address } from "../contant";
 
-function Login() {
+function Login({setInfo}) {
+  const navigate=useNavigate()
   const [user,setUser]=React.useState({});
   const inputHandler=(e)=>{
     setUser({
@@ -17,6 +19,10 @@ function Login() {
     axios.post(`${server_address}/login`, user)
     .then((res)=>{
       console.log('res',res);
+      localStorage.setItem('userInfo',JSON.stringify(user))
+      setInfo(true)
+      navigate('/students')
+    
     })
     .catch((error)=>{
       console.log("error",error)

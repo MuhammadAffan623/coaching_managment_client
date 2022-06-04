@@ -5,14 +5,14 @@ import {server_address} from "../contant"
 import ModalPopup from './ModalPopup';
 const columns = [
   {
-    title: 'StudentId',
-    dataIndex: 'StudentId',
-    key: 'StudentId',
+    title: 'TeacherId',
+    dataIndex: 'TeacherId',
+    key: 'TeacherId',
   },
   {
     title: 'Name',
-    dataIndex: 'LastName',
-    key: 'LastName',
+    dataIndex: 'lastName',
+    key: 'lastName',
     render: (text) => <a>{text}</a>,
   },
   {
@@ -27,8 +27,8 @@ const columns = [
   },
   {
     title: 'Email',
-    dataIndex: 'Email',
-    key: 'Email',   
+    dataIndex: 'email',
+    key: 'email',   
   },
   
 ];
@@ -108,19 +108,19 @@ const data1 = [
   },
 ];
 
-const App = () => {
+const TeacherTable = () => {
   const [data,setData]=React.useState([])
   const [modal,setModal]=React.useState({open:false})
-  const [student,setStudent]=React.useState({});
+  const [teacher,setTeacher]=React.useState({});
   const inputHandler=(e)=>{
-    setStudent({
-      ...student,
+    setTeacher({
+      ...teacher,
       [e.target.name]:e.target.value
     })
   }
   const submitHandler=async(e)=>{
     e.preventDefault();
-    await axios.post(`${server_address}/addStudents`,student)
+    await axios.post(`${server_address}/addTeaches`,teacher)
     .then((res)=>{
       console.log(res);
       Data();
@@ -136,7 +136,7 @@ const App = () => {
     Data();
   }, [])
   const Data = async() => {
-  await axios.get(`${server_address}/students`)
+  await axios.get(`${server_address}/teachers`)
       .then((res) => {
         setData(res.data)
         // data1 = res.data;
@@ -149,10 +149,9 @@ const App = () => {
   return (
     <>
    <div className='py-7 text-2xl font-semibold w-11/12 mx-auto justify-between items-center flex flex-row'>
-   <h1 className=''>All Students</h1>
-   <div className='text-xl bg-gradient-to-r from-sky-500 to-indigo-500 py-2 px-4 rounded-lg text-white cursor-pointer' onClick={()=>setModal({open:true})} >Add Student</div>
+   <h1 className=''>All Teachers</h1>
+   <div className='text-xl bg-gradient-to-r from-sky-500 to-indigo-500 py-2 px-4 rounded-lg text-white cursor-pointer' onClick={()=>setModal({open:true})} >Add Teacher</div>
    </div>
-    
     <div className='px-[70px]'>
     <Table columns={columns} dataSource={data && data.data} />
     </div>
@@ -178,4 +177,4 @@ const App = () => {
   )
 };
 
-export default App;
+export default TeacherTable;

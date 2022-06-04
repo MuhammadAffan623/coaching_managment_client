@@ -2,7 +2,9 @@ import React from 'react'
 
 const StudentTable = () => {
   return (
-    <div>StudentTable</div>
+    <>
+    <h1></h1>
+    </>
   )
 }
 
