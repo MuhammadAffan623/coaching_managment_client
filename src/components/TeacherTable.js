@@ -157,7 +157,7 @@ const TeacherTable = () => {
     </div>
     <ModalPopup setModal={setModal} modal={modal}>
       <form onSubmit={submitHandler} className='flex flex-col h-full gap-5 p-4'>
-        <h2 className='text-2xl font-semibold text-center'>ADD STUDENTS</h2>
+        <h2 className='text-2xl font-semibold text-center'>ADD TEACHER</h2>
         <div className='flex flex-row gap-4 w-full text-lg '>
         <input placeholder='Enter First Name' name='FirstName' onChange={inputHandler} className='w-1/2 bg-[#f5f6f8] rounded-md  h-[40px] px-3'/>
         <input placeholder='Enter Last Name' name='LastName' onChange={inputHandler} className='w-1/2 bg-[#f5f6f8] rounded-md h-[40px] px-3'/>
